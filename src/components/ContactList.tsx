@@ -17,6 +17,10 @@ const ContactList = () => {
   const selectedIds = useSelector(selectSelectedIds);
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingContact, setEditingContact] = useState<Contact | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<{
+    contactIds: string[];
+    isBulk: boolean;
+  } | null>(null);
 
   const filteredContacts = useMemo(() => {
     if (!searchQuery.trim()) return contacts;
@@ -33,7 +37,9 @@ const ContactList = () => {
     filteredContacts.length > 0 &&
     selectedIds.length === filteredContacts.length;
 
-  const handleBulkDeleteClick = () => {};
+  const handleBulkDeleteClick = () => {
+    setDeleteConfirm({ contactIds: selectedIds, isBulk: true });
+  };
 
   const handleSelectAll = () => {
     if (
@@ -49,9 +55,14 @@ const ContactList = () => {
     }
   };
 
-  const handleEdit = (contact: Contact) => {};
+  const handleEdit = (contact: Contact) => {
+    setEditingContact(contact);
+    setShowAddModal(true);
+  };
 
-  const handleDeleteClick = (contactId: string) => {};
+  const handleDeleteClick = (contactId: string) => {
+    setDeleteConfirm({ contactIds: [contactId], isBulk: false });
+  };
 
   const renderActionBar = () => {
     return (
@@ -66,21 +77,23 @@ const ContactList = () => {
           />
           <span className="search-icon">🔍</span>
         </div>
-        {selectedIds.length > 0 && (
-          <button className="btn btn-danger" onClick={handleBulkDeleteClick}>
-            Bulk Delete ({selectedIds.length})
-          </button>
-        )}
+        <div className="action-buttons">
+          {selectedIds.length > 0 && (
+            <button className="btn btn-primary" onClick={handleBulkDeleteClick}>
+              Bulk Delete ({selectedIds.length})
+            </button>
+          )}
 
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            setEditingContact(null);
-            setShowAddModal(true);
-          }}
-        >
-          Add Contact
-        </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              setEditingContact(null);
+              setShowAddModal(true);
+            }}
+          >
+            Add Contact
+          </button>
+        </div>
       </div>
     );
   };
@@ -152,7 +165,16 @@ const ContactList = () => {
       <h1 className="page-title">Contact Manager</h1>
       {renderActionBar()}
       {filteredContacts.length === 0 ? (
-        <p>No contacts found.</p>
+        <div className="table-container">
+          <div className="empty-state">
+            <div className="empty-state-icon">📋</div>
+            <div className="empty-state-text">
+              {searchQuery
+                ? "No contacts found"
+                : 'No contacts yet. Click "Add Contact" to get started!'}
+            </div>
+          </div>
+        </div>
       ) : (
         renderContactsTable()
       )}
