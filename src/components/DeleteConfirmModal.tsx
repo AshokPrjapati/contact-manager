@@ -35,7 +35,7 @@ const DeleteConfirmModal = ({
         if (e.target === e.currentTarget) onCancel();
       }}
     >
-      <div className="modal">
+      <div className="modal" style={{ width: "360px" }}>
         <div className="modal-header">
           <div className="modal-title">
             <span className="modal-icon">
@@ -59,9 +59,7 @@ const DeleteConfirmModal = ({
               ? `Are you sure you want to delete all ${count} contacts?`
               : "Are you sure you want to delete this contact?"}
           </p>
-          <p style={{ color: "#64748b", fontSize: "13px", marginTop: "8px" }}>
-            This action cannot be undone.
-          </p>
+          <p style={{ marginTop: "8px" }}>This action cannot be undone.</p>
         </div>
 
         <div className="modal-footer">
@@ -69,6 +67,7 @@ const DeleteConfirmModal = ({
             type="button"
             className="btn btn-secondary"
             onClick={onCancel}
+            style={{ flex: 1 }}
           >
             Cancel
           </button>
@@ -76,6 +75,7 @@ const DeleteConfirmModal = ({
             type="button"
             className="btn btn-danger"
             onClick={handleDelete}
+            style={{ flex: 1 }}
           >
             Delete
           </button>

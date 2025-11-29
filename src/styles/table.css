@@ -1,6 +1,6 @@
 .table-container {
   background-color: white;
-  border-radius: 12px;
+  border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
@@ -11,8 +11,8 @@ table {
 }
 
 thead {
-  background-color: #F1F5F9;
-  border-bottom: 1px solid #E2E8F0;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 th {
@@ -23,7 +23,7 @@ th {
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-right: 1px solid #E2E8F0;
+  border-right: 1px solid #e2e8f0;
 }
 
 th:last-child {
@@ -34,8 +34,8 @@ td {
   padding: 16px;
   font-size: 14px;
   color: #333;
-  border-bottom: 1px solid #E2E8F0;
-  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
 }
 
 td:last-child {
@@ -50,7 +50,7 @@ tr:hover {
   width: 18px;
   height: 18px;
   cursor: pointer;
-  accent-color: #0066cc;
+  accent-color: #006efa;
 }
 
 .action-cell {

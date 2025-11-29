@@ -36,7 +36,7 @@
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  max-width: 500px;
+  max-width: 720px;
   width: 90%;
   animation: slideUp 0.3s ease-out;
 }
@@ -58,11 +58,10 @@
   gap: 8px;
 }
 
-.modal-icon{
+.modal-icon {
   display: flex;
   align-items: center;
   justify-content: center;
- 
 }
 
 .modal-close {
@@ -86,6 +85,8 @@
 
 .modal-body {
   padding: 24px;
+  color: #334155;
+  font-size: 14px;
 }
 
 .modal-footer {

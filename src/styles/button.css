@@ -1,19 +1,20 @@
 .btn {
   padding: 10px 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   text-decoration: none;
 }
 
 .btn-primary {
-  background-color: #0066cc;
+  background-color: #006efa;
   color: white;
 }
 
@@ -23,7 +24,7 @@
 }
 
 .btn-danger {
-  background-color: #e63946;
+  background-color: #e11d48;
   color: white;
 }
 
@@ -53,7 +54,7 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: #0066cc;
+  color: #006efa;
   transition: color 0.2s;
 }
 
@@ -62,7 +63,7 @@
 }
 
 .btn-icon.danger {
-  color: #e63946;
+  color: #e11d48;
 }
 
 .btn-icon.danger:hover {
