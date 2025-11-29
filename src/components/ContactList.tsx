@@ -8,12 +8,15 @@ import {
 } from "../features/contacts/contactSlice";
 import { AppDispatch } from "../app/store";
 import { Contact } from "../features/contacts/types";
+import ContactModal from "./ContactModal";
 
 const ContactList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [searchQuery, setSearchQuery] = useState("");
   const contacts = useSelector(selectAllContacts);
   const selectedIds = useSelector(selectSelectedIds);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [editingContact, setEditingContact] = useState<Contact | null>(null);
 
   const filteredContacts = useMemo(() => {
     if (!searchQuery.trim()) return contacts;
@@ -69,7 +72,13 @@ const ContactList = () => {
           </button>
         )}
 
-        <button className="btn btn-primary" onClick={() => {}}>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            setEditingContact(null);
+            setShowAddModal(true);
+          }}
+        >
           Add Contact
         </button>
       </div>
@@ -146,6 +155,15 @@ const ContactList = () => {
         <p>No contacts found.</p>
       ) : (
         renderContactsTable()
+      )}
+      {showAddModal && (
+        <ContactModal
+          contact={editingContact}
+          onClose={() => {
+            setShowAddModal(false);
+            setEditingContact(null);
+          }}
+        />
       )}
     </div>
   );

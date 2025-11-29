@@ -1,5 +1,8 @@
 @import "./styles/button.css";
 @import "./styles/control.css";
+@import "./styles/form.css";
+@import "./styles/modal.css";
+@import "./styles/table.css";
 
 .container {
   max-width: 1280px;
