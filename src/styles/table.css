@@ -55,8 +55,15 @@ tr:hover {
 
 .action-cell {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
+}
+
+.action-cell > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
 .empty-state {

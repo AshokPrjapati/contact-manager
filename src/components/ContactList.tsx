@@ -139,20 +139,29 @@ const ContactList = () => {
                 <td>{contact.addressLine1}</td>
                 <td>
                   <div className="action-cell">
-                    <button
-                      className="btn-icon"
-                      onClick={() => handleEdit(contact)}
-                      title="Edit"
-                    >
-                      <img src="/assets/edit.svg" alt="Edit" />
-                    </button>
-                    <button
-                      className="btn-icon danger"
-                      onClick={() => handleDeleteClick(contact.id)}
-                      title="Delete"
-                    >
-                      <img src="/assets/delete.svg" alt="Delete" />
-                    </button>
+                    <div className="">
+                      <button
+                        className="btn-icon"
+                        onClick={() => handleEdit(contact)}
+                        title="Edit"
+                        style={{ background: "#EFF6FF" }}
+                      >
+                        <img src="/assets/edit.svg" alt="Edit" />
+                      </button>
+                      <p>Edit</p>
+                    </div>
+
+                    <div className="">
+                      <button
+                        className="btn-icon danger"
+                        onClick={() => handleDeleteClick(contact.id)}
+                        title="Delete"
+                        style={{ background: "#FFF1F2" }}
+                      >
+                        <img src="/assets/delete.svg" alt="Delete" />
+                      </button>
+                      <p>Delete</p>
+                    </div>
                   </div>
                 </td>
               </tr>
