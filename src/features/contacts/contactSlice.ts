@@ -4,12 +4,12 @@ import { Contact } from "./types";
 
 interface ContactsState {
   items: Contact[];
-  selectedIds: Set<string>;
+  selectedIds: string[];
 }
 
 const initialState: ContactsState = {
   items: [],
-  selectedIds: new Set<string>(),
+  selectedIds: [],
 };
 
 const contactsSlice = createSlice({
@@ -30,24 +30,27 @@ const contactsSlice = createSlice({
     },
     deleteContact: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((c) => c.id !== action.payload);
-      state.selectedIds.delete(action.payload);
+      state.selectedIds = state.selectedIds.filter(
+        (id) => id !== action.payload
+      );
     },
     deleteBulk: (state, action: PayloadAction<string[]>) => {
       state.items = state.items.filter((c) => !action.payload.includes(c.id));
-      state.selectedIds.clear();
+      state.selectedIds = [];
     },
     toggleSelected: (state, action: PayloadAction<string>) => {
-      if (state.selectedIds.has(action.payload)) {
-        state.selectedIds.delete(action.payload);
+      const index = state.selectedIds.indexOf(action.payload);
+      if (index >= 0) {
+        state.selectedIds.splice(index, 1);
       } else {
-        state.selectedIds.add(action.payload);
+        state.selectedIds.push(action.payload);
       }
     },
     selectAll: (state) => {
-      state.items.forEach((c) => state.selectedIds.add(c.id));
+      state.selectedIds = state.items.map((c) => c.id);
     },
     clearSelected: (state) => {
-      state.selectedIds.clear();
+      state.selectedIds = [];
     },
   },
 });
@@ -66,8 +69,8 @@ export const {
 // Selectors
 export const selectAllContacts = (state: RootState) => state.contacts.items;
 export const selectSelectedIds = (state: RootState) =>
-  Array.from(state.contacts.selectedIds);
+  state.contacts.selectedIds;
 export const selectSelectedCount = (state: RootState) =>
-  state.contacts.selectedIds.size;
+  state.contacts.selectedIds.length;
 
 export default contactsSlice.reducer;
