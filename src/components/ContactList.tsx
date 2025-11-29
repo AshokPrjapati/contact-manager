@@ -1,7 +1,16 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import {
+  selectAllContacts,
+  selectSelectedIds,
+} from "../features/contacts/contactSlice";
 
 const ContactList = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const contacts = useSelector(selectAllContacts);
+  const selectedIds = useSelector(selectSelectedIds);
+
+  const handleBulkDeleteClick = () => {};
 
   const renderActionBar = () => {
     return (
@@ -16,6 +25,15 @@ const ContactList = () => {
           />
           <span className="search-icon">🔍</span>
         </div>
+        {selectedIds.length > 0 && (
+          <button className="btn btn-danger" onClick={handleBulkDeleteClick}>
+            Bulk Delete ({selectedIds.length})
+          </button>
+        )}
+
+        <button className="btn btn-primary" onClick={() => {}}>
+          Add Contact
+        </button>
       </div>
     );
   };
