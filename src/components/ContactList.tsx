@@ -136,7 +136,10 @@ const ContactList = () => {
                 <td>{contact.name}</td>
                 <td>{contact.phone}</td>
                 <td>{contact.email}</td>
-                <td>{contact.addressLine1}</td>
+                <td>
+                  {contact.addressLine1},{contact.addressLine2 ?? ""},{" "}
+                  {contact.pincode}
+                </td>
                 <td>
                   <div className="action-cell">
                     <div className="">
