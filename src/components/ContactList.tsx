@@ -9,6 +9,7 @@ import {
 import { AppDispatch } from "../app/store";
 import { Contact } from "../features/contacts/types";
 import ContactModal from "./ContactModal";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 const ContactList = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -185,6 +186,18 @@ const ContactList = () => {
             setShowAddModal(false);
             setEditingContact(null);
           }}
+        />
+      )}
+
+      {deleteConfirm && (
+        <DeleteConfirmModal
+          count={deleteConfirm.contactIds.length}
+          isBulk={deleteConfirm.isBulk}
+          onConfirm={() => {
+            setDeleteConfirm(null);
+          }}
+          onCancel={() => setDeleteConfirm(null)}
+          contactIds={deleteConfirm.contactIds}
         />
       )}
     </div>

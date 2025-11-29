@@ -50,12 +50,19 @@
 }
 
 .modal-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #334155;
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.modal-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
 }
 
 .modal-close {
