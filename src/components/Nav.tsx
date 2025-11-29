@@ -10,10 +10,16 @@ const Nav = () => {
         height: "60px",
         display: "flex",
         alignItems: "center",
-        paddingLeft: "40px",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
       }}
     >
-      <img width={138} height={32} src="/assets/logo.svg" alt="Logo" />
+      <div className="nav-container">
+        <div className="nav-logo">
+          <img width={138} height={32} src="/assets/logo.svg" alt="Logo" />
+        </div>
+      </div>
     </div>
   );
 };

@@ -76,7 +76,9 @@ const ContactList = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <span className="search-icon">🔍</span>
+          <span className="search-icon">
+            <img src="/assets/search-icon.svg" alt="Search" />
+          </span>
         </div>
         <div className="action-buttons">
           {selectedIds.length > 0 && (
@@ -164,21 +166,24 @@ const ContactList = () => {
   return (
     <div className="container">
       <h1 className="page-title">Contact Manager</h1>
-      {renderActionBar()}
-      {filteredContacts.length === 0 ? (
-        <div className="table-container">
-          <div className="empty-state">
-            <div className="empty-state-icon">📋</div>
-            <div className="empty-state-text">
-              {searchQuery
-                ? "No contacts found"
-                : 'No contacts yet. Click "Add Contact" to get started!'}
+      <div className="contact-list-container">
+        {renderActionBar()}
+        {filteredContacts.length === 0 ? (
+          <div className="table-container">
+            <div className="empty-state">
+              <div className="empty-state-icon">📋</div>
+              <div className="empty-state-text">
+                {searchQuery
+                  ? "No contacts found"
+                  : 'No contacts yet. Click "Add Contact" to get started!'}
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        renderContactsTable()
-      )}
+        ) : (
+          renderContactsTable()
+        )}
+      </div>
+
       {showAddModal && (
         <ContactModal
           contact={editingContact}
