@@ -34,9 +34,9 @@
 }
 
 .btn-secondary {
-  background-color: #e8ecf1;
-  color: #333;
-  border: 1px solid #d0d5dd;
+  background-color: white;
+  color: #006efa;
+  border: 1px solid #006efa;
 }
 
 .btn-secondary:hover {
