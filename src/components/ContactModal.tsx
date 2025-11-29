@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Contact } from "../features/contacts/types";
 import { validateContact, ValidationErrors } from "../utils/validation";
 import { useDispatch } from "react-redux";
@@ -25,6 +25,20 @@ const ContactModal = ({ contact, onClose }: ContactModalProps) => {
 
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [touched, setTouched] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    if (contact) {
+      setFormData({
+        name: contact.name,
+        phone: contact.phone,
+        email: contact.email,
+        addressLine1: contact.addressLine1,
+        addressLine2: contact.addressLine2 || "",
+        state: contact.state,
+        pincode: contact.pincode,
+      });
+    }
+  }, [contact]);
 
   const handleChange = (
     e: React.ChangeEvent<
