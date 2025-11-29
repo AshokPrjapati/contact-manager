@@ -1,10 +1,10 @@
 import ContactList from "./components/ContactList";
 import Nav from "./components/Nav";
-import { useLocalStorage } from "./hooks";
 import "./App.css";
+import { useContacts } from "./hooks/useContacts";
 
 function App() {
-  useLocalStorage();
+  useContacts();
 
   return (
     <main>
